@@ -264,3 +264,15 @@ export const getEmployeeStats = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+//recupérés un employé par son id
+export const getEmployeeById = async (req, res) => {
+  try {
+    const employe = await Employee.findById(req.params.id);
+    res.status(200).json({
+      message: "Employee récupérée avec succès.",
+      data: employe,
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};

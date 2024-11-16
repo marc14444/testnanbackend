@@ -8,6 +8,7 @@ import {
   supprimerEmploye,
   creerEmploye,
   getEmployeeStats,
+  getEmployeeById,
 } from "../controllers/adminController.js"; // Contrôleurs de l'admin
 import authAdmin from "../middleware/authAdmin.js"; // Middleware d'authentification
 import upload from '../middleware/multerConfig.js'; // Module 
@@ -24,6 +25,9 @@ router.put('/update/:id', authAdmin, updateAdmin);
 
 // Liste des employés
 router.get("/employes",authAdmin, listerEmployes);
+
+// Récupérer un employé par son id
+router.get("/employes/:id",authAdmin, getEmployeeById);
 
 // Créer un nouvel employé
 router.post("/employes", authAdmin, upload.single('photoProfil'), creerEmploye);
